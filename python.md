@@ -1,23 +1,18 @@
+# Basic
+```python
 a = int("3")
 print(type(a))
 b = str(1)
 print(type(b))
 c = float("1.123")
 print(type(c))
-
 print("hello", "world", sep="-")
-
-
 a = 30
-
 if (a == 30):
     print("a is 30")
 else:
     print("a is not 30")
-
-
 a = 'sb'
-
 # match a:
 #     case 'sb':
 #         print("a is sb")
@@ -33,15 +28,17 @@ while i < 30:
     if i == 20:
         pass
     i += 1
+```
 
+Multi-line string
+```python
 name = '''gerome
 is 
 good
 '''
-print(name)
+```
 
-print(name[0])
-print(name[-3])
+```python
 print("------------")
 name = 'gerome is good'
 print(name[-1])
@@ -51,8 +48,10 @@ name="gerome ren"
 print(name[2:4]) # goes from 2 to 4-1
 print(name[2:-1]) # important: size of name is 10, then this is equals to name[2:9]
 print(name[2:9])
+```
 
-##################### string methods #####################
+# StÍring methods
+```python
 a = "hello gerome"
 print(a.upper())
 print(a.lower())
@@ -72,21 +71,27 @@ print(a.replace("world,", "hey!" ))
 #split will convert to list
 a = "a, b, c, d"
 print(a.split(",")[0])
+```
+
 # convert list to string
+```python
 print("~".join(["1", "2", "3"])) # "1~2~3"
 
 text="hello123"
 print(text.isalpha())
 print(text.isalnum())
 print(text.isdigit())
+```
 
-##################### fstriging #####################
+# f-string (formatted string literal)
+```python
 a = "gerome"
 b = "ren"
 print(f"hello {a} {b}, how are you!")
+```
 
-
-##################### function #####################
+# function
+```python
 def average(a, b, c):
     return (a + b + c)/3
 print(average(1, 2, 3))
@@ -101,14 +106,17 @@ print(average(1, 2)) #2
 def average(a, b, c=10):
     return (a + b + c)/3
 print(average(b=10, a=10)) #10
+```
 
-##################### lambda function #####################
+# lambda function
+```python
 '''lambda funtions are anonymous inline functions'''
 sum = lambda x, y: x + y
 print(sum(1,2)) #3
+```
 
-
-##################### recursion #####################
+# recursion 
+```python
 '''A function calling itself to resolve problem'''
 '''FIBONACCI SERIES 0 1 2 3 5 8 13 ...'''
 def fib(n):
@@ -117,8 +125,10 @@ def fib(n):
 
     return fib(n-2) + fib(n-1)
 print(fib(5)) #5
+```
 
-##################### python module #####################
+# Python module
+```python
 '''
 Why use modules? we dont want to reinvent the wheel, so we use modules
 types of modules in python:
@@ -149,8 +159,10 @@ another good doc on requests module: https://requests.readthedocs.io/en/latest/
 import requests
 r = requests.get("https://www.baidu.com")
 print(r.status_code) #200
+```
 
-##################### variable scope #####################
+# variable scope 
+```python
 '''
 Function only keeps variables until it returns. After that, all variables inside function are deleted from memory.
 '''
@@ -163,10 +175,11 @@ def test():
     abc += 5
     print(f"global variable abc is {abc}") #15
 test()
+```
 
 
-
-##################### List and List Methods #####################
+# List
+```python
 '''List is ordered (this order is present and also maintained throughout the program) and mutable (changable) collection of items'''
 print("#### append ####")
 mylist = [1, 2, 3, 4, 5]
@@ -217,8 +230,10 @@ print(table) # [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 '''shortcut using list comprehention in below'''
 table = [i*2 for i in range(1, 11)]
 print(table) # [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+```
 
-##################### Tuples #####################
+# Tuples
+```python
 ''' Tuples are ordered but immutable (unchangable after creation) collection of items
     Why need Tuples? 
     1. Faster than lists (since they are immutable)
@@ -248,8 +263,10 @@ print("#### index(x) ####")
 # index(x): returns the index of the first occurrence of x in the tuple
 t1 = (1,3,1,3,1,4,5)
 print(t1.index(3)) #1
+```
 
-##################### Sets #####################
+# Sets
+```python
 '''
     sets are unordered, unique collections (no duplicates)
     no order, just like a bucket, you are simply storing elements
@@ -283,9 +300,10 @@ a = {3, 23, 1}
 b = {23, 4, 2, 55, 1}
 c = a.intersection(b)
 print(c) # {1, 23}
+```
 
-
-##################### Dictionary #####################
+# Dictionary
+```python
 '''
     key should be hashable (immutable types like string, number, tuple), means Python should be able
     to hash that particilar data type internally.
@@ -307,18 +325,18 @@ student.clear()
 ### dictionary comprehention ###
 s = {i: i+1 for i in range(5)}
 print(s)
+```
 
+# When to use Each Data Structure
+| Data Structure | Features                             | Best For                              |
+|----------------|--------------------------------------|---------------------------------------|
+| List           | Ordered, Mutable                     | Storing sequences, dynamic data       |
+| Tuple          | Ordered, Immutable                   | Fixed collections, dictionary keys    |
+| Set            | Unordered, Unique                    | Removing duplicates, set operations   |
+| Dictionary     | Ordered, Key-Value Pairs, Mutable    | Fast lookups, structured data         |
 
-##################### When to use Each Data Structure #####################
-'''
-Data Structure      Features                            Best For
-List                Ordered, Mutable                    Storing sequences, dynamic data
-Tuple               Ordered, Immutable                  Fixed collections, dictionary keys
-Set                 Unordered, Unique                   Removing duplicates, set operations
-Dictionary          Ordered, Key-Value Pairs, Mutable   Fast lookups, structured data
-'''
-
-##################### Class #####################
+# Class
+```python
 '''
 - self -> represents the instance of the class
 '''
@@ -396,9 +414,10 @@ print(f"Point p3: ({p3.x}, {p3.y})") #(3, 3)
 p1 = Point(3, 3)
 p2 = Point(3, 3)
 print(f"is p1 equal to p2? {p1 == p2})") #True
+```
 
-
-##################### Decorators #####################
+# Decorators
+```python
 '''
 Decorators are a way to modify or enhance functions or methods without changing their actual code.
 
@@ -450,8 +469,10 @@ say_hello()
 #Hello!
 #Hello!
 #I have executed the function 5 times.
+```
 
-##################### Getters and Setters using Decorators #####################
+# Getters and Setters using Decorators
+```python
 print("#### Getters and Setters using Decorators ####")
 class Employee:
     def __init__(self, age):
@@ -489,9 +510,10 @@ print(e3.salary) #$1000
 e4 = Employee(35)
 e4.salary = None
 print(e4.salary) #200
+```
 
-
-##################### Static && Class Methods using staticmethod decarator #####################
+# Static && Class Methods using staticmethod decarator
+```python
 '''
     !!!! Use case: 
     - there will be no self pass to staticmethod
@@ -555,8 +577,10 @@ e1.change_salary(e1, 50000)
 print("change.....")
 print(e1.company_name) # Google
 print(e1.salary) # 
+```
 
-######################## Dunder Methods (double underscore methods) #####################
+# Dunder Methods (double underscore methods)
+```python
 '''
     Magic methods, also called dunder (double underscore) methods, are special methods in Python
     that have double underscores at the beginning and end of their names (e.g. __init__, __str__,
@@ -592,9 +616,10 @@ class Employee:
 
 e1 = Employee(34000, "gerome", 4)
 print(str(e1)) #Employee Name: gerome, Salary: 34000, Bond: 4 years
+```
 
-
-#################### Exception Handling and Custom Errors #####################
+# Exception Handling and Custom Errors
+```python
 '''
 ZeroDivisionError
 
@@ -644,9 +669,10 @@ finally:
     # This code ALWAYS runs, whether there was an exception or not.
     # Perfect for cleanup actions (like closing files).
     print("This is the final cleanup step.")
+```
     
-    
-########################## Map filter and reduce ###################################
+# Map filter and reduce 
+```python
 '''
 map, filter, and reduce are higher-order functions in Python (and many other programming languages) that 
 operate on iterables (list, tuples, etc). They provide a concise and functional way to perform common 
@@ -693,8 +719,10 @@ print(reduce(sum, my_list))
 # [10, 5, 6]
 # [15, 6]
 # [21]
+```
 
-########################## Walrus opreator ###################################
+# Walrus opreator 
+```python
 '''
 The walrus operator allows you to assign a value to a variable as part of an expression, instead of in a separate line.
 In other words, it lets you “assign and return” a value simultaneously.
@@ -734,6 +762,5 @@ Python’s official grammar for a list comprehension is:
 [ expression for target in iterable [if condition] ]
 
 '''
-
-
-explain comprehension and summary it in python TODO
+```
+# comprehension in Python
