@@ -789,6 +789,15 @@ print(abc)
 
 result:
 {2: 3, 4: 5}
+
+3. Set comprehension
+structure:
+{expression for item in iterable if condition}
+
+sample:
+abc = ["aa", "ab", "bb", "cc"]
+def = {x for x in abc}
+print def
 ```
 
 
