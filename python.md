@@ -800,6 +800,50 @@ def = {x for x in abc}
 print def
 ```
 
+# Walrus operator
+'''
+Available in Python 3.8 and later, the walrus operator (:=) allows you to assign values to variables as part of an expression.
+'''
+def func_a():
+    return 10
 
+if (a :=func_a() > 5):
+    print(f"a is greater than 5: {a}")
+
+# args
+'''
+args will be a tuple of all the values passed to the sum function
+
+why need * before args? “This function can accept any number of positional arguments, and I want them packaged together inside a tuple called args.”
+'''
+def sum(*args):
+    print(type(args)) # <class 'tuple'>
+    total = 0
+    for num in args:
+        total += num
+    return total
+print(sum(1, 2, 3, 4, 5))
+
+# kwargs
+'''
+kwargs is a dictionary with all the key value pairs which were passed to marks
+'''
+
+def marks(**kwargs):
+    print(type(kwargs)) # <class 'dict'>
+    for key, value in kwargs.items():
+        print(f"key is {key} and value is {value}")
+    for item in kwargs:
+        print(f"key is {item} and value is {kwargs[item]}")  
+    for item in kwargs.items():
+        print(item)
+marks(gerome=1, summer=2, joey=3)
+
+# args + kwargs
+def render(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
+render(1,2,3, gerome=1, summer=2, joey=3)
 
 
