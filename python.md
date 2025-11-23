@@ -763,4 +763,34 @@ Python’s official grammar for a list comprehension is:
 
 '''
 ```
-# comprehension in Python
+# Comprehension in Python (推导)
+```
+Comprehensions are a concise way to create new sequences (lists, sets, dictionaries, generators) from existing iterables using a single line of code.
+They replace longer for-loops and make your code cleaner and more readable.
+
+1. list comprehension
+structure:
+[new_item for item in iterable if condition]
+
+sample:
+abc = ["result is " + str(x) for x in range(1,6) if x % 2 == 0]
+print(abc)
+
+result:
+['result is 2', 'result is 4']
+
+2. Dictionary comprehension
+structure:
+{key_expression: value_expression for item in iterable if condition}
+
+sample:
+abc = {x: x+1 for x in range(1,6) if x%2==0}
+print(abc)
+
+result:
+{2: 3, 4: 5}
+```
+
+
+
+
