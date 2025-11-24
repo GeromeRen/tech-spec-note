@@ -846,4 +846,38 @@ def render(*args, **kwargs):
 
 render(1,2,3, gerome=1, summer=2, joey=3)
 
+# Exercises - Decarator
+```
+def logger(func):
+    def wrapper():
+        print("Function is being called!")
+        func()
+    return wrapper
+
+@logger
+def say_hello():
+    print("Hello!")
+
+say_hello()
+
+def timmer(func):
+    import time
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Function {func.__name__} took {end_time - start_time} seconds to execute.")
+        return result
+    return wrapper
+@timmer
+def _sums(n):
+    total = 0
+    for i in range(1, n + 1):
+        total += i
+    return total
+
+print(_sums(100000000))
+```
+
+
 
