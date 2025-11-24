@@ -491,7 +491,7 @@ class Employee:
     def __init__(self, age):
         self._age = age
     
-    @property
+    @property # to define getter for Employee
     def salary(self):
         return self._salary
     @salary.setter
@@ -878,6 +878,24 @@ def _sums(n):
 
 print(_sums(100000000))
 ```
+# Exercises - Getter and Setter
+```
+class Employee:
+    @property
+    def salary(self):
+        return self.salary
+    @salary.setter
+    def salary(self, value):
+        if value < 0:
+            raise ValueError("Salary cannot be nagative value")
+        self.salary = value
 
+e1 = Employee()
+e1.salary = -1
+print(e1.salary)
+e2 = Employee()
+e2.salary = 5000
+print(e2.salary)
+```
 
 
