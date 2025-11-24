@@ -912,3 +912,26 @@ class MathUtils:
 print(MathUtils.add(3, 5))  # Returns 8
 MathUtils.description()  # Prints the description
 ```
+
+# Exercises - Dunder methods
+```
+class Book:
+    def __init__(self):
+        pass
+    @property
+    def title(self):
+        return self._title
+    @title.setter
+    def title(self, value):
+        self._title = value
+    def __str__(self):
+        return self._title
+    def __len__(self):
+        return len(self._title)
+b1 = Book()
+b1.title = "The Great Gatsby"
+print(len(b1))
+b2 = Book()
+b2.title = "The Great HHHH"
+print(len(b2))
+```
