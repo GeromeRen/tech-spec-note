@@ -897,5 +897,18 @@ e2 = Employee()
 e2.salary = 5000
 print(e2.salary)
 ```
+# Exercises - Class methods and static methods
+- A staticmethod is just a normal function placed inside a class for organization, but it cannot access or modify the class or instance.
+- A classmethod knows which class called it and can modify class state or create new instances.
+```
+class MathUtils:
+    @staticmethod
+    def add(a,b):
+        return a + b
+    @classmethod
+    def description(cls): #In a @classmethod, Python automatically passes the class object as the first argument.
+        print("This is a utility class for math operations.")
 
-
+print(MathUtils.add(3, 5))  # Returns 8
+MathUtils.description()  # Prints the description
+```
