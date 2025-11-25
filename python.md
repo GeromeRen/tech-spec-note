@@ -630,6 +630,10 @@ PermissionError - When you try to perform an operation without the necessary acc
 ValueError - When a function receives an argument of the right type but an inappropriate value.
 
 TypeError - When an operation or function is applied to an object of an inappropriate type.
+
+FileNotFoundError
+
+PermissionError
 "2" + 2
 len(5) len does not support integer
 
@@ -934,4 +938,20 @@ print(len(b1))
 b2 = Book()
 b2.title = "The Great HHHH"
 print(len(b2))
+```
+
+# Exercisees - map and filter
+```
+list1 = [1,2,3,4,5]
+ln1 = lambda x: x*2
+print(list(map(ln1, list1))) #[2, 4, 6, 8, 10]
+
+list2 = [10, 11, 12, 13, 14]
+ln2 = lambda x: x%2 == 0
+print(list(filter(ln2, list2))) #[10, 12, 14]
+
+list3 = [1,2,3]
+ln3 = lambda x, y: x*y
+from functools import reduce
+print(reduce(ln3, list3)) #6
 ```
