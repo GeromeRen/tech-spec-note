@@ -1105,3 +1105,42 @@ print(r.headers['content-type'])
 print(r.text)
 print(r.json()) 
 ```
+
+# Regular Expressions in Python - re module
+## Find one
+```python3
+import re
+text = "The quick brown fox jumps over the lazy dog."
+```
+## search for a pattern, if multi matched, return the first one
+```python3
+match = re.search(r"fox", text)
+print(match.start())
+print(match.end())
+```
+
+## how to use r?
+The 'r' before the string indicates a raw string, which tells Python to treat backslashes as literal characters.
+- Without raw string (regular string)
+```python3
+pattern1 = "\section"    # Python interprets \s as a space character
+print(pattern1)          # Output: " ection"
+```
+- With raw string
+```
+pattern2 = r"\section"   # Python treats \s as literal characters \ and s
+print(pattern2)          # Output: "\section"
+```
+
+## Find all
+```
+import re
+text = "The quick brown fox jumps over the lazy dog. The fox is clever."
+matches = re.findall(r"fox", text, re.IGNORECASE)  # returns ['fox', 'fox']
+print(matches)
+```
+## Replace
+```
+new_text = re.sub(r"fox", "cat", text)  
+print(new_text) # returns "The quick brown cat jumps over the lazy dog. The cat is clever."
+```
