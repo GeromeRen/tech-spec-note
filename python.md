@@ -1144,3 +1144,67 @@ print(matches)
 new_text = re.sub(r"fox", "cat", text)  
 print(new_text) # returns "The quick brown cat jumps over the lazy dog. The cat is clever."
 ```
+# Multithreading
+```
+'''
+This allow your pragrams to perform multiple tasks concurrently, improving performance
+Multithreading is particularly useful for I/O-bound tasks, such as web scraping, file handling, and network operations.
+Multithreading can help keep your application responsive by offloading time-consuming tasks to separate threads.
+Multithreading using threading module
+
+CPU Bound tasks are better handled with multiprocessing module
+CPU Bound tasks are tasks that require significant CPU resources and processing power, such as complex calculations, data analysis, and image processing.
+CPU Bound tasks can benefit from multiprocessing because it allows the program to utilize multiple CPU cores, thereby improving performance and reducing execution time.
+CPU Bound tasks are limited by the speed of the CPU, meaning that the performance of these tasks is primarily determined by the processing power of the CPU rather than other factors such as I/O operations or memory access.
+CPU Bound tasks can lead to performance bottlenecks if the CPU is overloaded with too many tasks, resulting in slower execution times and reduced responsiveness.
+CPU Bound tasks can be optimized by using efficient algorithms, parallel processing, and optimizing code to reduce CPU usage.
+COu Bound Prcesses: CPU-bound tasks require heavy computation and keep the processor busy. Examples include mathematical calculations, data processing, and video encoding.
+
+thread.join() - It blocks the current (main) thread until the target thread completes.
+'''
+
+
+import threading
+import time
+def worker(i):
+    """Thread worker function"""
+    print("thread {i} is running")
+    time.sleep(2)
+    print("thread {i} thread is done")
+
+threads = []
+for i in range(3):
+    thread = threading.Thread(target=worker, args=(i,))
+    threads.append(thread)
+    thread.start()
+
+for thread in threads:
+    thread.join() # It blocks the current (main) thread until the target thread completes. Wait until this exact thread finishes.
+
+print("All threads are done")
+```
+
+# Multiprocessing
+```
+import time
+from multiprocessing import Process
+
+def scan(path):
+    # run blackduck CLI command for this path
+    print(f"blackduck scan {path} start")
+    time.sleep(3)
+    print(f"blackduck scan {path} end")
+
+if __name__ == "__main__":
+    parts = ["src_part1", "src_part2", "src_part3"]
+    procs = []
+
+    for p in parts:
+        proc = Process(target=scan, args=(p,))
+        procs.append(proc)
+        proc.start()
+
+    for proc in procs:
+        proc.join()
+    print("All scans completed.")
+```
