@@ -1083,3 +1083,25 @@ python3 -m venv venv2
 source venv2/bin/activate
 pip install -r returnments.txt
 ```
+
+# API Call
+Good doc: https://requests.readthedocs.io/en/latest/user/quickstart/#make-a-request
+```pytyon
+import requests
+r = requests.get('https://api.github.com')
+r = requests.post('https://httpbin.org/post', data = {'key':'value'})
+r = requests.put('https://httpbin.org/put', data = {'key':'value'})
+r = requests.delete('https://httpbin.org/delete')
+r = requests.head('https://httpbin.org/get')
+r = requests.options('https://httpbin.org/get')
+r = requests.patch('https://httpbin.org/patch', data = {'key':'value'})
+r = requests.request('GET', 'https://api.github.com')
+r = requests.get('https://api.github.com', params = {'key':'value'})    
+r = requests.get('https://api.github.com', headers = {'Authorization':'Bearer YOUR_TOKEN'})
+r = requests.get('https://api.github.com', timeout = 5)                                 
+r = requests.get('https://api.github.com')
+print(r.status_code)
+print(r.headers['content-type'])
+print(r.text)
+print(r.json()) 
+```
