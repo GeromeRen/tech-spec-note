@@ -961,38 +961,75 @@ print(reduce(ln3, list3)) #6
 import os
 
 # list files and directories in a specified path
+```
 listdir = os.listdir("/Users/gerome/python_course")
 print(listdir)
-
+```
 # get current path
+```
 print(os.getcwd())
-
+```
 # check if a file or directory exists
+```
 print(os.path.exists("/Users/gerome/python_course/main.py"))
-
+```
 # os.remove()  # to remove a file; only works for deleting files, not directories
+```
 file_descriptor = os.open("/Users/gerome/python_course/abc.txt", os.O_CREAT | os.O_WRONLY)
 os.write(file_descriptor, "Hello".encode())  # create a file
 os.close(file_descriptor)
 os.remove("/Users/gerome/python_course/abc.txt")
-
+```
 # os.rmdir()   # to remove an empty directory
 # os.mkdir()   # to create a directory
+```
 os.mkdir("/Users/gerome/python_course/test_dir")
 os.rmdir("/Users/gerome/python_course/test_dir")
-
+```
 # shutil module is more powerful for file and directory management
-import shutil
+```import shutil```
 # shutil.rmtree() # to remove a directory and all its contents
+```
 os.mkdir("/Users/gerome/python_course/test_dir")
 os.makedirs("/Users/gerome/python_course/test_dir/sub_dir1/sub_dir2")  # to create nested directories
 shutil.rmtree("/Users/gerome/python_course/test_dir")  # to remove a directory and all its contents
-
+```
 # shutil.copy() # to copy a file
+```
 os.mkdir("/Users/gerome/python_course/test_dir")
 shutil.copy("gerome.txt", "/Users/gerome/python_course/test_dir/gerome_copy.txt")  # to copy a file
 print(os.listdir("/Users/gerome/python_course/test_dir"))
+```
 
 # shutil.move() # to move a file or directory
+```
 shutil.move("a.txt", "dir1/") # to move a file to a directory
+```
 
+# Write and Read file
+```
+with open("notes.txt", "w") as f:
+    f.write("Learning Python is fun")
+
+with open("notes.txt", "r") as f:
+    content = f.read()
+    print(content)
+```
+# Read line by line
+```
+with open("notes.txt", "r") as f:
+    for line in f:
+        print(line.strip())
+```
+# Use os module
+```
+import os
+print(os.getcwd())
+print(os.listdir())
+os.mkdir("new_folder")
+```
+# Use shutil module to copy file from one folder to another
+```
+import shutil
+shutil.copyfile("notes.txt", "notes_copy.txt")
+```
