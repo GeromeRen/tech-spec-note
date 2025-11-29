@@ -851,7 +851,7 @@ def render(*args, **kwargs):
 render(1,2,3, gerome=1, summer=2, joey=3)
 
 # Exercises - Decarator
-```
+```python3
 def logger(func):
     def wrapper():
         print("Function is being called!")
@@ -883,7 +883,7 @@ def _sums(n):
 print(_sums(100000000))
 ```
 # Exercises - Getter and Setter
-```
+```python3
 class Employee:
     @property
     def salary(self):
@@ -904,7 +904,7 @@ print(e2.salary)
 # Exercises - Class methods and static methods
 - A staticmethod is just a normal function placed inside a class for organization, but it cannot access or modify the class or instance.
 - A classmethod knows which class called it and can modify class state or create new instances.
-```
+```python3
 class MathUtils:
     @staticmethod
     def add(a,b):
@@ -918,7 +918,7 @@ MathUtils.description()  # Prints the description
 ```
 
 # Exercises - Dunder methods
-```
+```python3
 class Book:
     def __init__(self):
         pass
@@ -941,7 +941,7 @@ print(len(b2))
 ```
 
 # Exercisees - map and filter
-```
+```python3
 list1 = [1,2,3,4,5]
 ln1 = lambda x: x*2
 print(list(map(ln1, list1))) #[2, 4, 6, 8, 10]
@@ -961,20 +961,20 @@ print(reduce(ln3, list3)) #6
 import os
 
 # list files and directories in a specified path
-```
+```python3
 listdir = os.listdir("/Users/gerome/python_course")
 print(listdir)
 ```
 # get current path
-```
+```python3
 print(os.getcwd())
 ```
 # check if a file or directory exists
-```
+```python3
 print(os.path.exists("/Users/gerome/python_course/main.py"))
 ```
 # os.remove()  # to remove a file; only works for deleting files, not directories
-```
+```python3
 file_descriptor = os.open("/Users/gerome/python_course/abc.txt", os.O_CREAT | os.O_WRONLY)
 os.write(file_descriptor, "Hello".encode())  # create a file
 os.close(file_descriptor)
@@ -982,14 +982,14 @@ os.remove("/Users/gerome/python_course/abc.txt")
 ```
 # os.rmdir()   # to remove an empty directory
 # os.mkdir()   # to create a directory
-```
+```python3
 os.mkdir("/Users/gerome/python_course/test_dir")
 os.rmdir("/Users/gerome/python_course/test_dir")
 ```
 # shutil module is more powerful for file and directory management
 ```import shutil```
 # shutil.rmtree() # to remove a directory and all its contents
-```
+```python3
 os.mkdir("/Users/gerome/python_course/test_dir")
 os.makedirs("/Users/gerome/python_course/test_dir/sub_dir1/sub_dir2")  # to create nested directories
 shutil.rmtree("/Users/gerome/python_course/test_dir")  # to remove a directory and all its contents
@@ -1002,12 +1002,12 @@ print(os.listdir("/Users/gerome/python_course/test_dir"))
 ```
 
 # shutil.move() # to move a file or directory
-```
+```python3
 shutil.move("a.txt", "dir1/") # to move a file to a directory
 ```
 
 # Write and Read file
-```
+```python3
 with open("notes.txt", "w") as f:
     f.write("Learning Python is fun")
 
@@ -1016,20 +1016,70 @@ with open("notes.txt", "r") as f:
     print(content)
 ```
 # Read line by line
-```
+```python3
 with open("notes.txt", "r") as f:
     for line in f:
         print(line.strip())
 ```
 # Use os module
-```
+```python3
 import os
 print(os.getcwd())
 print(os.listdir())
 os.mkdir("new_folder")
 ```
 # Use shutil module to copy file from one folder to another
-```
+```python3
 import shutil
 shutil.copyfile("notes.txt", "notes_copy.txt")
+```
+
+
+# virtual Env and Pip
+```pip install virtualenv```
+
+## create venv1
+```python3
+# -m tells Python to look for a module inside the current environment’s module search path and run it as if it were a script.
+python3 -m venv venv1
+```
+
+## activate venv1
+```source env1/bin/activate```
+
+## pip is Phython's package installer. It's used to install, upgrade and manage external libraries
+## Inside venv1, i want to install:
+```python3
+install requests
+install numpy==1.19.5
+```
+
+## list all package installed in venv1
+```pip list```
+
+## upgrade package
+```pip install requests --upgrade```
+
+## uninstall package
+```pip uninstall requests```
+
+## deactivate an virtual env
+```deactivate```
+
+# requirements.txt
+A requirements.txt file lists all the packages your project depends on. This makes it easy to recreate the environment on another machine
+
+## show all packages and versions
+```python3
+pip freeze
+```
+
+## Create the requirements.txt file
+```pip freeze > requirements.txt```
+
+## Switch to another virtual env and install all packages listed in requirements.txt
+```python3
+python3 -m venv venv2
+source venv2/bin/activate
+pip install -r returnments.txt
 ```
