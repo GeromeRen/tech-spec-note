@@ -1208,3 +1208,47 @@ if __name__ == "__main__":
         proc.join()
     print("All scans completed.")
 ```
+
+# Flash
+
+Bootstrap: https://getbootstrap.com/docs/4.0/examples/
+
+```
+from flask import Flask, request, render_template, jsonify
+
+app = Flask(__name__, static_folder="assets", static_url_path="/static")
+
+@app.route("/services")
+def home():
+    return render_template("home.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contacts.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/create", methods=["GET", "POST"])
+def create():
+    print(request.method)
+    return render_template("home.html")
+
+@app.raoute("/query", method=["GET"])
+def query():
+    name = request.args['name']
+    token = request.args['token']
+    return render_template("query.html", name, token)
+
+@app.route("/jsonify", method=["GET"])
+def test_jsonify():
+    """test jsonify"""
+    marks = {
+        "Gerome": 1,
+        "Summer": 2
+    }
+    return jsonify(marks)
+app.run(debug=True, port=9999)
+```
+More to explore: https://elevenlabs.io/pricing 
