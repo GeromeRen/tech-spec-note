@@ -386,6 +386,7 @@ cat.speak() #Meow Meow
     __getitem__ (indexing [])
     __setitem__ (indexing [])
     __delitem__ (deleting item [])
+    __call__(self, xxx)
     for list/dictionary-like behavior - allowing you to use [] with your objects
 '''
 
@@ -416,6 +417,19 @@ p2 = Point(3, 3)
 print(f"is p1 equal to p2? {p1 == p2})") #True
 ```
 
+```
+__call__
+When you define __call__ inside a class, you allow instances of that class to be called using parentheses () just like functions.
+
+class Greeter:
+    def __init__(self, name):
+        self.name = name
+
+    def __call__(self, greeting):
+        print(f"{greeting}, {self.name}!")
+hello = Greeter("Alice")
+hello("Hi")   # This calls hello.__call__("Hi")
+```
 # Decorators
 ```python
 '''
