@@ -387,6 +387,8 @@ cat.speak() #Meow Meow
     __setitem__ (indexing [])
     __delitem__ (deleting item [])
     __call__(self, xxx)
+    __name__ If you execute a Python script directly (for example, python myscript.py),then Python sets __name__ to "__main__" in that file.
+    __package__ 
     for list/dictionary-like behavior - allowing you to use [] with your objects
 '''
 
@@ -1266,3 +1268,15 @@ def test_jsonify():
 app.run(debug=True, port=9999)
 ```
 More to explore: https://elevenlabs.io/pricing 
+
+# Module name
+Yes — by default, the **module name** follows this pattern 👇
+
+| How it’s imported or run | Default `__name__` | Example file | Example module name |
+|---------------------------|--------------------|---------------|----------------------|
+| Imported from a package | Package path + filename (no `.py`) | `app/createbranch.py` | `"app.createbranch"` |
+| Imported top-level (not in a package) | Filename without `.py` | `utils.py` | `"utils"` |
+| Run directly as a script | `"__main__"` | `createbranch.py` | `"__main__"` |
+
+
+
