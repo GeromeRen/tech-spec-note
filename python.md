@@ -1278,5 +1278,51 @@ Yes — by default, the **module name** follows this pattern 👇
 | Imported top-level (not in a package) | Filename without `.py` | `utils.py` | `"utils"` |
 | Run directly as a script | `"__main__"` | `createbranch.py` | `"__main__"` |
 
+# Exercise - Archive Pack
+```python3
+import shutil
+import logging
+import pigz_python
+from pathlib import Path
+logging.basicConfig(level=logging.INFO)
+logging.root.setLevel(logging.INFO)
+logger = logging.getLogger(__name__)
 
+_TAR_GZ_FORMAT = "gztar"
+
+class ArchivePacker:
+    """ArchivePacker from HT"""
+    def __init__(self, out_dir: Path, images_dir: Path, archive_name: str):
+        self.archive_name = out_dir / archive_name
+        self.out_dir = out_dir
+        self.images_dir = str(images_dir)
+    def create_shutil_archive(self, compress_type: str) -> None:
+        """Create archive with shutil"""
+        logger.debug(f"Creating new FW: {self.archive_name} with {compression_type}")
+        shutil.make_archive(str(self.archive_name), compress_type, self.images_dir, base_dir=".")
+    
+    def pack(self) -> None:
+        raise NotImplementedError
+
+class TarGzPacker(ArchivePacker):
+    """Tar Gz ArchivePacker"""
+    def __init__(self, out_dir: Path, images_dir: Path, archive_name: str, enable_pigz: bool = False):
+        super().__init__(out_dir, images_dir, archive_name)
+        self.enable_pigz = enable_pigz
+        self.compress_type = _TAR_GZ_FORMAT
+    
+    def pack(self) -> None:
+        """pack for pigz"""
+        if (self.enable_pigz):
+            logger.debug("Creating tar.gz with pigz module")
+            archive_tar = self.out_dir / shutil.make_archive(
+                str(self.archive_name), "tar", root_dir=self.images_dir, base_dir="."
+            )
+            pigz_python.compress_file(archive_tar)
+        else:
+            super().create_shutil_archive(compress_type = self.compress_type)
+
+if "__main__" == __name__:
+    TarGzPacker(out_dir=Path("./out"), images_dir=Path("./images"), archive_name="test", enable_pigz=True).pack()
+```
 
