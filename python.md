@@ -263,6 +263,8 @@ print("#### index(x) ####")
 # index(x): returns the index of the first occurrence of x in the tuple
 t1 = (1,3,1,3,1,4,5)
 print(t1.index(3)) #1
+
+map is not immutable hence cannot append, but we can add two tuples
 ```
 
 # Sets
