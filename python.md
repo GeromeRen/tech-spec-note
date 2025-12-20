@@ -597,6 +597,46 @@ print(e1.company_name) # Google
 print(e1.salary) # 
 ```
 
+
+## Class Decorator
+# Class Decorator Example
+What is a class decorator?
+It’s a class that can be used like a function decorator, but it must implement a special method called:
+```python3
+def __call__(self, *args, **kwargs)
+```
+This makes the class **callable** — meaning you can “call” it like a function.
+When you apply @Calculator:
+```python3
+     @Calculator
+     def add(a, b):
+         return a + b
+```
+Python internally does:
+```python3
+add = Calculator(add)
+```
+So now `add` is **no longer a regular function** — it’s an instance of the `Calculator` class. instance! instance! instance! 
+```python3
+class Container:
+    def __init__(self, func):
+        self.item = []
+        self.func = func
+    
+    def __call__(self,*args, **kwargs):
+        for arg in args:
+            self.item.append(arg)
+        return self.func(*args, **kwargs)
+@Container # like add = Calculator(add), then hello is a instance of Container class
+def hello(name):
+    return f"Hello, {name}!"
+
+hello('gerome')
+hello('alice')
+hello('bob')
+
+print(hello.item) #['gerome', 'alice', 'bob']
+```
 # Dunder Methods (double underscore methods)
 ```python
 '''
