@@ -847,10 +847,8 @@ def sum(*args):
 print(sum(1, 2, 3, 4, 5))
 
 # kwargs
-'''
 kwargs is a dictionary with all the key value pairs which were passed to marks
-'''
-
+```python3
 def marks(**kwargs):
     print(type(kwargs)) # <class 'dict'>
     for key, value in kwargs.items():
@@ -860,13 +858,16 @@ def marks(**kwargs):
     for item in kwargs.items():
         print(item)
 marks(gerome=1, summer=2, joey=3)
+```
 
 # args + kwargs
+```python3
 def render(*args, **kwargs):
     print(args)
     print(kwargs)
 
 render(1,2,3, gerome=1, summer=2, joey=3)
+```
 
 # Exercises - Decarator
 ```python3
